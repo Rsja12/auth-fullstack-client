@@ -1,12 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import App from './components/App'
+import Welcome from './components/Welcome'
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <App>
+            <Route exact path='/' component={ Welcome } />
+        </App>
     </BrowserRouter>,
     document.querySelector('#root')
 )
