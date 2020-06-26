@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
+
 import * as actions from '../../actions'
 
 export class SignUp extends Component {
 
     submitForm = (formProps) => {
-        console.log(formProps)
+        this.props.signup(formProps)
     }
 
     render() {
@@ -40,4 +42,9 @@ export class SignUp extends Component {
     }
 }
 
-export default reduxForm({ form: 'signup' })(SignUp)
+// compose allows us to apply multiple HOCs to a single component
+export default compose(
+    connect(null, actions),
+    reduxForm({ form: 'signup' })
+)(SignUp)
+
