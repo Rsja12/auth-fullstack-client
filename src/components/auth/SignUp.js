@@ -11,6 +11,7 @@ export class SignUp extends Component {
                         name='email'
                         type='text'
                         component='input'
+                        autoComplete='off'
                     />
                 </fieldset>
                 <fieldset>
@@ -19,6 +20,7 @@ export class SignUp extends Component {
                         name='password'
                         type='password'
                         component='input'
+                        autoComplete='off'
                     />
                 </fieldset>
             </form>
