@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export default ChildComponent => {
+
     class ComposedComponent extends Component {
 
         // Our component just got rendered
@@ -26,7 +27,7 @@ export default ChildComponent => {
     }
 
     const mapStateToProps = state => ({
-        auth: state.auth
+        auth: state.auth.isSignedIn
     })
 
     return connect(mapStateToProps)(ComposedComponent);
