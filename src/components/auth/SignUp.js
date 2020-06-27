@@ -35,15 +35,22 @@ export class SignUp extends Component {
                         autoComplete='off'
                     />
                 </fieldset>
+                <div>
+                    {this.props.errorMessage}
+                </div>
                 <button>Sign Up!</button>
             </form>
         )
     }
 }
 
+const mapStateToProps = state => ({
+    errorMessage: state.auth.errorMessage
+})
+
 // compose allows us to apply multiple HOCs to a single component
 export default compose(
-    connect(null, actions),
+    connect(mapStateToProps, actions),
     reduxForm({ form: 'signup' })
 )(SignUp)
 
