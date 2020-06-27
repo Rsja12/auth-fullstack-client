@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AUTH_USER } from './types'
+import { AUTH_USER, AUTH_ERROR } from './types'
 
 // thunk allows us to return a function or an obj
 // if we return function it gets called with the dispatch function
@@ -16,10 +16,17 @@ import { AUTH_USER } from './types'
 // SAME AS ->
 
 export const signup = formProps => async dispatch => {
-    const response = await axios.post('http://localhost:3090/signup', formProps)
-
-    dispatch({
-        type: AUTH_USER,
-        payload: response.data.token
-    })
+    try {
+        const response = await axios.post('http://localhost:3090/signup', formProps)
+        console.log(response.data.error)
+        dispatch({
+            type: AUTH_USER,
+            payload: response.data.token
+        })
+    } catch (e) {
+        dispatch({
+            type: AUTH_ERROR,
+            payload: 'Email in use'
+        })
+    }
 }
