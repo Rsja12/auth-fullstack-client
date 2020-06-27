@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import './HeaderStyle.css'
+
 export class Header extends Component {
 
     renderLinks() {
@@ -23,7 +25,7 @@ export class Header extends Component {
 
     render() {
         return (
-            <div>
+            <div className='header'>
                 <Link to='/'>Home</Link>
                 { this.renderLinks() }
             </div>
