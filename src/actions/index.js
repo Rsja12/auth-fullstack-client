@@ -16,7 +16,7 @@ import { AUTH_USER, AUTH_ERROR } from './types'
 // SAME AS ->
 
 export const signup = (formProps, callback) => async dispatch => {
-    
+
     try {
         const response = await axios.post('http://localhost:3090/signup', formProps)
         
@@ -39,4 +39,13 @@ export const signup = (formProps, callback) => async dispatch => {
 
     }
 
+}
+
+export const signout = () => {
+    localStorage.removeItem('token');
+
+    return {
+        type: AUTH_USER,
+        payload: ''
+    }
 }
