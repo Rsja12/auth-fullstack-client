@@ -12,8 +12,7 @@ export class SignUp extends Component {
     }
 
     render() {
-
-        // comes from redux form
+        // Comes from redux-form
         const { handleSubmit } = this.props
 
         return (
