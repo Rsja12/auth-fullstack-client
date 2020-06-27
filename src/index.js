@@ -13,7 +13,10 @@ import reducers from './reducers'
 
 const store = createStore(
     reducers,
-    {},
+    // initial state -> app checks this when starts up to see if there is a token in localStorage
+    {
+        auth: { isSignedIn: localStorage.getItem('token') }
+    },
     applyMiddleware(reduxThunk)
 )
 

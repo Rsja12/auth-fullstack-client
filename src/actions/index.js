@@ -16,6 +16,7 @@ import { AUTH_USER, AUTH_ERROR } from './types'
 // SAME AS ->
 
 export const signup = (formProps, callback) => async dispatch => {
+    
     try {
         const response = await axios.post('http://localhost:3090/signup', formProps)
         
@@ -23,12 +24,19 @@ export const signup = (formProps, callback) => async dispatch => {
             type: AUTH_USER,
             payload: response.data.token
         })
+
+        // stores token in localStorage
+        localStorage.setItem('token', response.data.token)
         // redirection callback
         callback();
+
     } catch (e) {
+
         dispatch({
             type: AUTH_ERROR,
             payload: e.response.data.error //-> error message coming from api logic
         })
+
     }
+
 }
